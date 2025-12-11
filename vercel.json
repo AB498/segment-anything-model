@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "{lib,public}/**"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/api"
+    },
+    {
+      "src": "/(.*)\\.(.+)",
+      "dest": "/static/$1.$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api"
+    }
+  ]
+}
