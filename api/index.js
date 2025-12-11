@@ -6,6 +6,7 @@ app.get('/vocab.txt.gz', (req, res, next) => {
   res.redirect('https://huggingface.co/AB498/sam3/resolve/main/bpe_simple_vocab_16e6.txt.gz');
 });
 app.get('/example', (req, res, next) => {
+  res.set('Content-Type', 'text/plain');
   res.send(`from sam3.model_builder import build_sam3_image_model
 from sam3.model.sam3_image_processor import Sam3Processor
 from PIL import Image
@@ -21,6 +22,6 @@ sam_model = build_sam3_image_model(
     device="cuda",
     bpe_path=bpe_path
 )
-sam_processor = Sam3Processor(sam_model, confidence_threshold=0.3, device="cuda")`)
+sam_processor = Sam3Processor(sam_model, confidence_threshold=0.3, device="cuda")`);
 });
 module.exports = app;
