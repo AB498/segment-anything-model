@@ -1,0 +1,15 @@
+{
+  "short_name": "ImageLabelAI",
+  "name": "Free Online Image Labeling AI",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#6366f1",
+  "background_color": "#ffffff"
+}
