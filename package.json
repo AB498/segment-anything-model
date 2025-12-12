@@ -1,15 +1,16 @@
 {
   "name": "image-labeling-ai",
   "version": "1.0.0",
-  "description": "A free advanced AI image labeling service with auto annotation using SAM3 and Grounding DINO for precise object detection and labeling",
+  "description": "A free online advanced AI image labeling service with auto annotation using SAM3 and Grounding DINO for precise object detection and labeling",
   "keywords": [
-    "image-labeling",
+    "online-image-labeling",
     "object-detection",
     "ai",
     "computer-vision",
     "machine-learning",
     "sam3",
-    "grounding-dino"
+    "grounding-dino",
+    "auto-annotation"
   ],
   "dependencies": {
     "cors": "^2.8.5",

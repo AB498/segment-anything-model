@@ -157,22 +157,41 @@ export default function App() {
       <div className="relative z-10 px-6">
         {/* Hero Header */}
         <div className="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6 backdrop-blur-sm">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
             </span>
-            <span class="text-sm text-cyan-700 font-medium">Free AI Auto Annotation Technology</span>
+            <span className="text-sm text-cyan-700 font-medium">Free Online AI Auto Annotation</span>
           </div>
           
-          <h1 class="text-7xl font-black mb-6 tracking-tight">
-            <span class="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          {/* Large Logo */}
+          <div className="flex justify-center mb-6">
+            <svg width="120" height="120" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="url(#paint0_linear_1_2)"/>
+              <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8Z" stroke="white" stroke-width="2"/>
+              <path d="M16 12C13.7909 12 12 13.7909 12 16C12 18.2091 13.7909 20 16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12Z" fill="white"/>
+              <path d="M22 16L26 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 16L10 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 6L16 10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 22L16 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366F1"/>
+                  <stop offset="1" stop-color="#8B5CF6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          
+          <h1 className="text-7xl font-black mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
               Auto Label Anything
             </span>
           </h1>
           
-          <p class="text-xl text-slate-700 max-w-2xl mx-auto">
-            Free AI-powered auto annotation with SAM3 and Grounding DINO
+          <p className="text-xl text-slate-700 max-w-2xl mx-auto">
+            Free online AI-powered auto annotation with SAM3 and Grounding DINO
           </p>
         </div>
 
@@ -197,7 +216,7 @@ export default function App() {
                     <svg className="w-12 h-12 text-slate-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-slate-600 text-sm">Click to upload image</span>
+                    <span className="text-slate-600 text-sm">Click to upload image online</span>
                     <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
                 )}
@@ -206,7 +225,7 @@ export default function App() {
               <button
                 onClick={detect}
                 disabled={loading || !image}
-                class="w-full mt-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed rounded-xl font-semibold transition-all shadow-md shadow-cyan-500/20 text-white"
+                className="w-full mt-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed rounded-xl font-semibold transition-all shadow-md shadow-cyan-500/20 text-white"
               >
                 {loading ? 'Auto Labeling...' : 'Auto Label Objects'}
               </button>
@@ -233,10 +252,10 @@ export default function App() {
           {/* Results */}
           <div className="bg-white backdrop-blur-xl border border-slate-200 rounded-2xl p-6 shadow-sm">
             {loading ? (
-              <div class="flex flex-col items-center justify-center h-96 text-center">
-                <div class="animate-spin h-12 w-12 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
-                <p class="text-slate-600 font-medium">Auto labeling image...</p>
-                <p class="text-slate-500 text-sm mt-1">AI is automatically detecting and labeling objects in your image</p>
+              <div className="flex flex-col items-center justify-center h-96 text-center">
+                <div className="animate-spin h-12 w-12 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
+                <p className="text-slate-600 font-medium">Auto labeling image online...</p>
+                <p className="text-slate-500 text-sm mt-1">AI is automatically detecting and labeling objects in your image</p>
               </div>
             ) : result ? (
               <div className="space-y-4">

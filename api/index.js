@@ -1,6 +1,6 @@
 /*
  * Image Labeling AI API
- * Free AI-powered auto annotation service using SAM3 and Grounding DINO
+ * Free online AI-powered auto annotation service using SAM3 and Grounding DINO
  * Provides automatic object detection and image labeling capabilities
  */
 
