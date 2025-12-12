@@ -9,6 +9,9 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get('/', (req, res, next) => {
+  res.send('Hello World!')
+});
 app.get('/sam3.pt', (req, res, next) => {
   res.redirect('https://huggingface.co/AB498/sam3/resolve/main/sam3.pt');
 });
