@@ -111,265 +111,32 @@
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-white text-slate-800">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header class="sticky top-0 z-50 bg-white backdrop-blur-sm shadow-sm">
         <div class="container mx-auto px-6 py-4">
             <nav class="flex justify-between items-center">
                 <a href="#"
                     class="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">SAM</a>
                 <div class="flex gap-8">
                     <a href="#features"
-                        class="font-medium text-slate-700 hover:text-indigo-600 transition-colors">Features</a>
+                        class="font-medium text-slate-800 hover:text-indigo-600 transition-colors">Features</a>
                     <a href="#how-it-works"
-                        class="font-medium text-slate-700 hover:text-indigo-600 transition-colors">How It Works</a>
-                    <a href="#demo" class="font-medium text-slate-700 hover:text-indigo-600 transition-colors">Demo</a>
+                        class="font-medium text-slate-800 hover:text-indigo-600 transition-colors">How It Works</a>
+                    <a href="#demo" class="font-medium text-slate-800 hover:text-indigo-600 transition-colors">Demo</a>
                     <a href="#testimonials"
-                        class="font-medium text-slate-700 hover:text-indigo-600 transition-colors">Testimonials</a>
+                        class="font-medium text-slate-800 hover:text-indigo-600 transition-colors">Testimonials</a>
                 </div>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-indigo-50 to-purple-50 py-20 md:py-28">
+    <section class="bg-gradient-to-br from-indigo-50 to-purple-50 py-6">
         <div class="container mx-auto px-6 text-center">
 
             <div id="root-demo" class="w-full flex flex-col"></div>
 
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Powerful Features</h2>
-            <p class="text-xl text-slate-600 text-center max-w-3xl mx-auto mb-16">
-                Our platform combines state-of-the-art AI models to deliver unmatched image segmentation capabilities
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="w-8 h-8">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <path d="M21 15l-5-5L5 21"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Precise Segmentation</h3>
-                    <p class="text-slate-600">Pixel-perfect object segmentation that accurately outlines object
-                        boundaries with unprecedented detail.</p>
-                </div>
-
-                <div
-                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="w-8 h-8">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Text Prompts</h3>
-                    <p class="text-slate-600">Describe what you want to detect in plain English and our AI will find it
-                        instantly.</p>
-                </div>
-
-                <div
-                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="w-8 h-8">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Zero-Shot Learning</h3>
-                    <p class="text-slate-600">No training required. Our model works with any object you can describe.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
-            <p class="text-xl text-slate-600 text-center max-w-3xl mx-auto mb-16">
-                Simple process, powerful results in just three easy steps
-            </p>
-
-            <div class="max-w-4xl mx-auto space-y-12">
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div
-                        class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex items-center justify-center font-bold text-xl">
-                        1
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-3">Upload Your Image</h3>
-                        <p class="text-slate-600 text-lg">Drag and drop your image or select from our sample gallery.
-                            Our system supports all major image formats.</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div
-                        class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex items-center justify-center font-bold text-xl">
-                        2
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-3">Describe Objects</h3>
-                        <p class="text-slate-600 text-lg">Type a simple text prompt describing what you want to detect.
-                            Examples: "red car", "person wearing glasses", "golden retriever".</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div
-                        class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex items-center justify-center font-bold text-xl">
-                        3
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-3">Get Results Instantly</h3>
-                        <p class="text-slate-600 text-lg">See precisely labeled images with bounding boxes and
-                            segmentation masks in seconds. Download or share your results.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section id="demo" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Try It Yourself</h2>
-            <p class="text-xl text-slate-600 text-center max-w-3xl mx-auto mb-16">
-                Experience the power of Segment Anything Model with our interactive demo
-            </p>
-
-            <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-6">Input</h3>
-                        <div class="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="mx-auto mb-4">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="17 8 12 3 7 8"></polyline>
-                                <line x1="12" y1="3" x2="12" y2="15"></line>
-                            </svg>
-                            <p class="text-slate-500 mb-4">Upload an image or try our samples</p>
-                            <button
-                                class="px-4 py-2 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors">
-                                Choose File
-                            </button>
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 font-medium">What to detect?</label>
-                            <input type="text" placeholder="e.g., car, person, tree..."
-                                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                        </div>
-
-                        <button
-                            class="w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
-                            Process Image
-                        </button>
-                    </div>
-
-                    <div>
-                        <h3 class="text-2xl font-bold mb-6">Output</h3>
-                        <div
-                            class="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center h-full flex flex-col justify-center items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="mx-auto mb-4">
-                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                                <polyline points="7 3 7 8 15 8"></polyline>
-                            </svg>
-                            <p class="text-slate-500">Results will appear here</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What Our Users Say</h2>
-            <p class="text-xl text-slate-600 text-center max-w-3xl mx-auto mb-16">
-                Join thousands of satisfied users who have transformed their workflow
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <p class="text-slate-600 italic mb-6">"This tool has revolutionized how we process images in our
-                        research. The accuracy is incredible and the text prompt interface makes it so easy to use."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <h4 class="font-bold">Dr. Sarah Johnson</h4>
-                            <p class="text-slate-500 text-sm">Computer Vision Researcher</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <p class="text-slate-600 italic mb-6">"As a designer, I spend hours manually masking objects.
-                        Segment Anything Model cuts that time down to seconds. It's a game-changer!"</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <h4 class="font-bold">Michael Chen</h4>
-                            <p class="text-slate-500 text-sm">Graphic Designer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <p class="text-slate-600 italic mb-6">"The zero-shot capability is mind-blowing. We've been able to
-                        detect objects we never trained for with remarkable precision."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <h4 class="font-bold">Raj Patel</h4>
-                            <p class="text-slate-500 text-sm">AI Product Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-indigo-500 to-purple-500 p-12 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Workflow?</h2>
-                <p class="text-xl text-indigo-100 max-w-2xl mx-auto mb-8">
-                    Join thousands of professionals who are already using Segment Anything Model to save time and
-                    improve accuracy.
-                </p>
-                <a href="#demo"
-                    class="inline-block px-8 py-4 bg-white text-indigo-600 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-                    Get Started Free
-                </a>
-            </div>
         </div>
     </section>
 
