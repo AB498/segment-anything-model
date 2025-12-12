@@ -1,14 +1,15 @@
 {
-  "name": "segment-anything-model",
+  "name": "image-labeling-ai",
   "version": "1.0.0",
-  "description": "An advanced AI image segmentation service using Segment Anything Model (SAM) for precise object detection and segmentation",
+  "description": "A free advanced AI image labeling service with auto annotation using SAM3 and Grounding DINO for precise object detection and labeling",
   "keywords": [
-    "segment-anything",
-    "image-segmentation",
+    "image-labeling",
     "object-detection",
     "ai",
     "computer-vision",
-    "machine-learning"
+    "machine-learning",
+    "sam3",
+    "grounding-dino"
   ],
   "dependencies": {
     "cors": "^2.8.5",

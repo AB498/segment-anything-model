@@ -1,3 +1,9 @@
+/*
+ * Image Labeling AI API
+ * Free AI-powered auto annotation service using SAM3 and Grounding DINO
+ * Provides automatic object detection and image labeling capabilities
+ */
+
 const express = require("express");
 const app = express();
 const multer = require('multer');

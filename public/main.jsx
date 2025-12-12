@@ -157,22 +157,22 @@ export default function App() {
       <div className="relative z-10 px-6">
         {/* Hero Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6 backdrop-blur-sm">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
             </span>
-            <span className="text-sm text-cyan-700 font-medium">AI Vision Technology</span>
+            <span class="text-sm text-cyan-700 font-medium">Free AI Auto Annotation Technology</span>
           </div>
           
-          <h1 className="text-7xl font-black mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Detect Anything
+          <h1 class="text-7xl font-black mb-6 tracking-tight">
+            <span class="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              Auto Label Anything
             </span>
           </h1>
           
-          <p className="text-xl text-slate-700 max-w-2xl mx-auto">
-            Next-generation object detection powered by advanced AI models
+          <p class="text-xl text-slate-700 max-w-2xl mx-auto">
+            Free AI-powered auto annotation with SAM3 and Grounding DINO
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export default function App() {
                 type="text"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="What should I detect?"
+                placeholder="What objects should I label?"
                 className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
               />
               
@@ -206,9 +206,9 @@ export default function App() {
               <button
                 onClick={detect}
                 disabled={loading || !image}
-                className="w-full mt-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed rounded-xl font-semibold transition-all shadow-md shadow-cyan-500/20 text-white"
+                class="w-full mt-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed rounded-xl font-semibold transition-all shadow-md shadow-cyan-500/20 text-white"
               >
-                {loading ? 'Detecting...' : 'Detect Objects'}
+                {loading ? 'Auto Labeling...' : 'Auto Label Objects'}
               </button>
             </div>
 
@@ -233,10 +233,10 @@ export default function App() {
           {/* Results */}
           <div className="bg-white backdrop-blur-xl border border-slate-200 rounded-2xl p-6 shadow-sm">
             {loading ? (
-              <div className="flex flex-col items-center justify-center h-96 text-center">
-                <div className="animate-spin h-12 w-12 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
-                <p className="text-slate-600 font-medium">Analyzing image...</p>
-                <p className="text-slate-500 text-sm mt-1">AI is detecting objects in your image</p>
+              <div class="flex flex-col items-center justify-center h-96 text-center">
+                <div class="animate-spin h-12 w-12 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
+                <p class="text-slate-600 font-medium">Auto labeling image...</p>
+                <p class="text-slate-500 text-sm mt-1">AI is automatically detecting and labeling objects in your image</p>
               </div>
             ) : result ? (
               <div className="space-y-4">
@@ -261,8 +261,8 @@ export default function App() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </div>
-                <p className="text-slate-600 font-medium">Upload an image to begin</p>
-                <p className="text-slate-500 text-sm mt-1">AI-powered detection results appear here</p>
+                <p className="text-slate-600 font-medium">Upload an image to begin labeling</p>
+                <p className="text-slate-500 text-sm mt-1">AI-powered labeling results appear here</p>
               </div>
             )}
           </div>
