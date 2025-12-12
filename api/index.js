@@ -4,6 +4,7 @@ const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fs = require('fs');
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +21,28 @@ app.get('/vocab.txt.gz', (req, res, next) => {
   res.redirect('https://huggingface.co/AB498/sam3/resolve/main/bpe_simple_vocab_16e6.txt.gz');
 });
 
-// New endpoint for Grounding DINO API
+// Grounding DINO API URLs for rotation
+const GROUNDING_DINO_URLS = [
+  "https://ab498-v1-grounding-dino-1.hf.space",
+  "https://ab498-v1-grounding-dino-2.hf.space",
+  "https://ab498-v1-grounding-dino-3.hf.space",
+  "https://ab498-v1-grounding-dino-4.hf.space"
+];
+
+// Use Vercel's tmp directory for storing index file
+const INDEX_FILE_PATH = `/tmp/grounding-dino-url-index.txt`;
+
+let urlIndex = Number((() => { 
+  try { 
+    return fs.readFileSync(INDEX_FILE_PATH, 'utf8'); 
+  } catch { 
+    return 0;
+  } 
+})()) || 0;
+
+console.log(`[GROUNDING_DINO] Using URL Index: ${urlIndex}`);
+
+// New endpoint for Grounding DINO API with URL rotation
 app.post('/label-image', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
@@ -33,6 +55,19 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
     if (!text_prompt) {
       return res.status(400).json({ error: 'text_prompt is required' });
     }
+
+    // Rotate to next URL
+    const currentUrl = GROUNDING_DINO_URLS[urlIndex % GROUNDING_DINO_URLS.length];
+    urlIndex = (urlIndex + 1) % GROUNDING_DINO_URLS.length;
+    
+    // Save the updated index to Vercel's tmp directory
+    try { 
+      fs.writeFileSync(INDEX_FILE_PATH, urlIndex.toString()); 
+    } catch (e) { 
+      console.log('[GROUNDING_DINO_ERROR] Failed to save URL index:', e); 
+    }
+
+    console.log(`[GROUNDING_DINO] Using URL: ${currentUrl}`);
 
     // Prepare form data for forwarding
     const formData = new FormData();
@@ -47,7 +82,7 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
     formData.append('text_threshold', text_threshold || '0.25');
 
     // Forward request to Hugging Face Space
-    const response = await fetch('https://ab498-v1-grounding-dino-1.hf.space/label_image', {
+    const response = await fetch(`${currentUrl}/label_image`, {
       method: 'POST',
       body: formData,
       headers: {
