@@ -39,9 +39,6 @@ app.get('/vocab.txt.gz', (req, res, next) => {
 // Grounding DINO API URLs for rotation
 const GROUNDING_DINO_URLS = [
   "https://ab498-v1-grounding-dino-1.hf.space",
-  "https://ab498-v1-grounding-dino-2.hf.space",
-  "https://ab498-v1-grounding-dino-3.hf.space",
-  "https://ab498-v1-grounding-dino-4.hf.space"
 ];
 
 // Use Vercel's tmp directory for storing index file
