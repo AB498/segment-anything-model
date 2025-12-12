@@ -429,17 +429,21 @@
                 });
 
                 if (!apiResponse.ok) {
-                    throw new Error('API error: ' + apiResponse.status);
+                    const errorText = await apiResponse.text();
+                    throw new Error('API error: ' + apiResponse.status + ' - ' + errorText);
                 }
 
                 const result = await apiResponse.json();
+                
+                // Log the result for debugging
+                console.log('API Response:', result);
                 
                 // Display result
                 displayResult(result);
             } catch (error) {
                 console.error('Error labeling image:', error);
                 hideLoading();
-                alert('Error processing image. Please try again.');
+                alert('Error processing image: ' + error.message);
             }
         }
 
@@ -456,16 +460,35 @@
         function displayResult(result) {
             hideLoading();
             
-            if (result && result.labeled_image) {
-                // Display the labeled image
-                resultImage.src = 'data:image/jpeg;base64,' + result.labeled_image;
+            // Check if we have a valid result
+            if (result && (result.labeled_image_url || result.boxes || result.phrases)) {
+                // Handle the actual API response format
+                if (result.labeled_image_url) {
+                    // The API returns a URL to the labeled image
+                    resultImage.src = result.labeled_image_url;
+                } else {
+                    // Fallback to the original image if no labeled image URL is provided
+                    resultImage.src = selectedImageUrl;
+                }
+                
                 resultContainer.classList.remove('hidden');
                 
                 // Display result info
                 let infoHtml = '<div class="bg-blue-50 p-3 rounded-lg">';
                 infoHtml += '<h5 class="font-medium text-gray-900 text-sm mb-2">Detection Results:</h5>';
                 
-                if (result.boxes && result.labels) {
+                if (result.phrases && result.logits) {
+                    infoHtml += '<ul class="space-y-1">';
+                    // Limit to first 3 results for cleaner display
+                    for (let i = 0; i < Math.min(result.phrases.length, 3); i++) {
+                        infoHtml += '<li class="text-sm"><span class="font-medium">' + result.phrases[i] + '</span> (' + (parseFloat(result.logits[i]) || 0).toFixed(2) + ' confidence)</li>';
+                    }
+                    if (result.phrases.length > 3) {
+                        infoHtml += '<li class="text-sm text-gray-500">+ ' + (result.phrases.length - 3) + ' more objects detected</li>';
+                    }
+                    infoHtml += '</ul>';
+                } else if (result.boxes && result.labels) {
+                    // Handle alternative format
                     infoHtml += '<ul class="space-y-1">';
                     for (let i = 0; i < Math.min(result.labels.length, 3); i++) {
                         infoHtml += '<li class="text-sm"><span class="font-medium">' + result.labels[i] + '</span> (' + (result.logits[i] || 0).toFixed(2) + ' confidence)</li>';
@@ -475,13 +498,13 @@
                     }
                     infoHtml += '</ul>';
                 } else {
-                    infoHtml += '<p class="text-sm text-gray-600">No objects detected for "' + textPrompt.value + '"</p>';
+                    infoHtml += '<p class="text-sm text-gray-600">Processing complete. ' + (result.message || 'Objects detected.') + '</p>';
                 }
                 
                 infoHtml += '</div>';
                 resultInfo.innerHTML = infoHtml;
             } else {
-                resultInfo.innerHTML = '<div class="bg-red-50 p-3 rounded-lg text-red-700 text-sm">Error: Could not process image.</div>';
+                resultInfo.innerHTML = '<div class="bg-red-50 p-3 rounded-lg text-red-700 text-sm">Error: Unexpected API response format.</div>';
                 resultContainer.classList.remove('hidden');
             }
         }
