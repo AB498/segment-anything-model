@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 const multer = require('multer');
+const cors = require('cors');
+
+// Enable CORS for all routes
+app.use(cors());
 const upload = multer({ storage: multer.memoryStorage() });
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
