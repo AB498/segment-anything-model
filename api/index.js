@@ -5,10 +5,14 @@ const upload = multer({ storage: multer.memoryStorage() });
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const fs = require('fs');
+const path = require('path');
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res, next) => {
   res.send('Hello World!')
