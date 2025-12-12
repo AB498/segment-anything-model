@@ -3,7 +3,7 @@ const app = express();
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const FormData = require('form-data');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const fs = require('fs');
 
 // Middleware to parse form data
@@ -13,6 +13,7 @@ app.use(express.json());
 app.get('/', (req, res, next) => {
   res.send('Hello World!')
 });
+
 app.get('/sam3.pt', (req, res, next) => {
   res.redirect('https://huggingface.co/AB498/sam3/resolve/main/sam3.pt');
 });
@@ -32,15 +33,42 @@ const GROUNDING_DINO_URLS = [
 // Use Vercel's tmp directory for storing index file
 const INDEX_FILE_PATH = `/tmp/grounding-dino-url-index.txt`;
 
-let urlIndex = Number((() => { 
-  try { 
-    return fs.readFileSync(INDEX_FILE_PATH, 'utf8'); 
-  } catch { 
+let urlIndex = Number((() => {
+  try {
+    return fs.readFileSync(INDEX_FILE_PATH, 'utf8');
+  } catch {
     return 0;
-  } 
+  }
 })()) || 0;
 
 console.log(`[GROUNDING_DINO] Using URL Index: ${urlIndex}`);
+
+// Health check and warm-up function
+const warmUpUrls = async () => {
+  console.log('[GROUNDING_DINO] Warming up URLs...');
+
+  for (let i = 0; i < GROUNDING_DINO_URLS.length; i++) {
+    try {
+      const url = GROUNDING_DINO_URLS[i];
+      console.log(`[GROUNDING_DINO] Checking health of ${url}`);
+
+      const response = await fetch(`${url}/health`, {
+        method: 'GET',
+        timeout: 5000 // 5 second timeout
+      });
+
+      if (response.ok) {
+        console.log(`[GROUNDING_DINO] ${url} is healthy`);
+      } else {
+        console.log(`[GROUNDING_DINO] ${url} returned status ${response.status}`);
+      }
+    } catch (error) {
+      console.log(`[GROUNDING_DINO] Error checking ${GROUNDING_DINO_URLS[i]}: ${error.message}`);
+    }
+  }
+
+  console.log('[GROUNDING_DINO] Warm-up complete');
+};
 
 // New endpoint for Grounding DINO API with URL rotation
 app.post('/label-image', upload.single('image'), async (req, res) => {
@@ -59,12 +87,12 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
     // Rotate to next URL
     const currentUrl = GROUNDING_DINO_URLS[urlIndex % GROUNDING_DINO_URLS.length];
     urlIndex = (urlIndex + 1) % GROUNDING_DINO_URLS.length;
-    
+
     // Save the updated index to Vercel's tmp directory
-    try { 
-      fs.writeFileSync(INDEX_FILE_PATH, urlIndex.toString()); 
-    } catch (e) { 
-      console.log('[GROUNDING_DINO_ERROR] Failed to save URL index:', e); 
+    try {
+      fs.writeFileSync(INDEX_FILE_PATH, urlIndex.toString());
+    } catch (e) {
+      console.log('[GROUNDING_DINO_ERROR] Failed to save URL index:', e);
     }
 
     console.log(`[GROUNDING_DINO] Using URL: ${currentUrl}`);
@@ -76,7 +104,7 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
       contentType: req.file.mimetype
     });
     formData.append('text_prompt', text_prompt);
-    
+
     // Set default thresholds if not provided
     formData.append('box_threshold', box_threshold || '0.35');
     formData.append('text_threshold', text_threshold || '0.25');
@@ -96,6 +124,12 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
     console.error('Error processing request:', error);
     res.status(500).json({ error: 'Failed to process image labeling request' });
   }
+});
+
+// Health endpoint
+app.get('/health', async (req, res) => {
+  await warmUpUrls();
+  res.json({ status: 'healthy' });
 });
 
 module.exports = app;
