@@ -47,7 +47,7 @@ app.post('/label-image', upload.single('image'), async (req, res) => {
     formData.append('text_threshold', text_threshold || '0.25');
 
     // Forward request to Hugging Face Space
-    const response = await fetch('https://ab498-grounding-dino-1.hf.space/label_image', {
+    const response = await fetch('https://ab498-v1-grounding-dino-1.hf.space/label_image', {
       method: 'POST',
       body: formData,
       headers: {
